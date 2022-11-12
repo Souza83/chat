@@ -14,5 +14,5 @@ class ChatMessage{
     required this.userId,
     required this.userName,
     required this.userImageURL,
-  })
+  });
 }
