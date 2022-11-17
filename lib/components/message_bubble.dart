@@ -57,7 +57,7 @@ class MessageBuble extends StatelessWidget {
                 ),
               ),
               width: 180,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 vertical: 10,
                 horizontal: 16,
               ),
@@ -66,6 +66,9 @@ class MessageBuble extends StatelessWidget {
                 horizontal: 8,
               ),
               child: Column(
+                crossAxisAlignment: belongsToCurrentUser
+                    ? CrossAxisAlignment.end
+                    : CrossAxisAlignment.start,
                 children: [
                   Text(
                     message.userName,
@@ -74,7 +77,14 @@ class MessageBuble extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(message.text),
+                  Text(
+                    message.text,
+                    textAlign:
+                        belongsToCurrentUser ? TextAlign.right : TextAlign.left,
+                    style: TextStyle(
+                      color: belongsToCurrentUser ? Colors.black : Colors.white,
+                    ),
+                  ),
                 ],
               ),
             ),
