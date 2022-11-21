@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:chat/components/menssages.dart';
 import 'package:chat/components/new_message.dart';
 import 'package:chat/core/models/chat_notification.dart';
@@ -14,7 +16,7 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Chat'),
+        title: const Text('My Chat'),
         actions: [
           DropdownButtonHideUnderline(
             child: DropdownButton(
@@ -27,7 +29,7 @@ class ChatPage extends StatelessWidget {
                   value: 'logout',
                   child: Container(
                     child: Row(
-                      children: [
+                      children: const [
                         Icon(
                           Icons.exit_to_app,
                           color: Colors.black87,
@@ -78,12 +80,24 @@ class ChatPage extends StatelessWidget {
       ),
       body: SafeArea(
         child: Column(
-          children: [
+          children: const [
             Expanded(child: Messages()),
             NewMessage(),
           ],
         ),
       ),
+      // floatingActionButton: FloatingActionButton(
+      //   child: const Icon(Icons.add),
+      //   onPressed: () {
+      //     Provider.of<ChatNotificationService>(
+      //       context,
+      //       listen: false,
+      //     ).add(ChatNotification(
+      //       title: 'Mais uma notificação!',
+      //       body: Random().nextDouble().toString(),
+      //     ));
+      //   },
+      // ),
     );
   }
 }
