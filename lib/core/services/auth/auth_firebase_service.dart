@@ -7,7 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthFirebaseService implements AuthService {
   static ChatUser? _currentUser;
-  static MultiStreamController<ChatUser?>? _controller;
+  //static MultiStreamController<ChatUser?>? _controller; //Verificar a necessidade dessa linha de código
 
   static final _userStream = Stream<ChatUser?>.multi((controller) async {
     final authChanges = FirebaseAuth.instance.authStateChanges();
@@ -43,7 +43,12 @@ class AuthFirebaseService implements AuthService {
     //credential.user?.updatePhotoURL(photoURL);
   }
 
-  Future<void> login(String email, String password) async {}
+  Future<void> login(String email, String password) async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+  }
 
   Future<void> logout() async {
     FirebaseAuth.instance.signOut();
