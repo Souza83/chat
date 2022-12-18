@@ -9,10 +9,10 @@ class MessageBuble extends StatelessWidget {
   final bool belongsToCurrentUser; // Pertence a usuário logado/corrente
 
   const MessageBuble({
-    Key? key,
     required this.message,
     required this.belongsToCurrentUser,
-  }) : super(key: key);
+    super.key,
+  });
 
   Widget _showUserImage(String imageURL) {
     ImageProvider? provider;
@@ -44,7 +44,7 @@ class MessageBuble extends StatelessWidget {
               decoration: BoxDecoration(
                 color: belongsToCurrentUser
                     ? Colors.grey.shade300
-                    : Theme.of(context).accentColor,
+                    : Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.only(
                   topLeft: const Radius.circular(12),
                   topRight: const Radius.circular(12),
@@ -61,10 +61,7 @@ class MessageBuble extends StatelessWidget {
                 vertical: 10,
                 horizontal: 16,
               ),
-              margin: const EdgeInsets.symmetric(
-                vertical: 15,
-                horizontal: 8,
-              ),
+              margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 8),
               child: Column(
                 crossAxisAlignment: belongsToCurrentUser
                     ? CrossAxisAlignment.end
@@ -94,7 +91,7 @@ class MessageBuble extends StatelessWidget {
           top: 0,
           left: belongsToCurrentUser ? null : 165,
           right: belongsToCurrentUser ? 165 : null,
-          child: _showUserImage(message.userImageURL),
+          child: _showUserImage(message.userImageUrl),
         ),
       ],
     );

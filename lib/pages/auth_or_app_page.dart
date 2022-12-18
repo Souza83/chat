@@ -19,15 +19,15 @@ class AuthOrAppPage extends StatelessWidget {
       future: init(context),
       builder: (ctx, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return LoadingPage();
+          return const LoadingPage();
         } else {
           return StreamBuilder<ChatUser?>(
             stream: AuthService().userChanges,
             builder: (ctx, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return LoadingPage();
+                return const LoadingPage();
               } else {
-                return snapshot.hasData ? ChatPage() : AuthPage();
+                return snapshot.hasData ? const ChatPage() : const AuthPage();
               }
             },
           );

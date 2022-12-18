@@ -1,8 +1,5 @@
-import 'dart:math';
-
 import 'package:chat/components/menssages.dart';
 import 'package:chat/components/new_message.dart';
-import 'package:chat/core/models/chat_notification.dart';
 import 'package:chat/core/services/auth/auth_service.dart';
 import 'package:chat/core/services/notification/chat_notification_service.dart';
 import 'package:chat/pages/notification_page.dart';
@@ -27,17 +24,15 @@ class ChatPage extends StatelessWidget {
               items: [
                 DropdownMenuItem(
                   value: 'logout',
-                  child: Container(
-                    child: Row(
-                      children: const [
-                        Icon(
-                          Icons.exit_to_app,
-                          color: Colors.black87,
-                        ),
-                        SizedBox(width: 10),
-                        Text('Sair'),
-                      ],
-                    ),
+                  child: Row(
+                    children: const [
+                      Icon(
+                        Icons.exit_to_app,
+                        color: Colors.black87,
+                      ),
+                      SizedBox(width: 10),
+                      Text('Sair'),
+                    ],
                   ),
                 ),
               ],

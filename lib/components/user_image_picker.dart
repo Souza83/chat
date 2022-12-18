@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class UserImagePicker extends StatefulWidget {
-final void Function(File image) onImagePick;
+  final void Function(File image) onImagePick;
 
   const UserImagePicker({
-    Key? key,
+    super.key,
     required this.onImagePick,
-}) : super(key: key);
+  });
 
   @override
   State<UserImagePicker> createState() => _UserImagePickerState();
@@ -18,7 +18,7 @@ final void Function(File image) onImagePick;
 class _UserImagePickerState extends State<UserImagePicker> {
   File? _image;
 
-  Future<void> _pickImage()async{
+  Future<void> _pickImage() async {
     final picker = ImagePicker();
     final pickedImage = await picker.pickImage(
       //source: ImageSource.camera, // Habilita a câmera.
@@ -27,14 +27,13 @@ class _UserImagePickerState extends State<UserImagePicker> {
       maxWidth: 150,
     );
 
-    if(pickedImage != null){
+    if (pickedImage != null) {
       setState(() {
         _image = File(pickedImage.path);
       });
 
       widget.onImagePick(_image!);
     }
-
   }
 
   @override
@@ -44,19 +43,18 @@ class _UserImagePickerState extends State<UserImagePicker> {
         CircleAvatar(
           radius: 40,
           backgroundColor: Colors.grey,
-          backgroundImage: _image != null ? FileImage(_image!) : null, 
+          backgroundImage: _image != null ? FileImage(_image!) : null,
         ),
         TextButton(
-          onPressed: _pickImage, 
+          onPressed: _pickImage,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: const [
               Icon(
                 Icons.image,
-                color: Theme.of(context).primaryColor,
               ),
-                const SizedBox(width: 10),
-                const Text('Adicionar Imagem'),
+              SizedBox(width: 10),
+              Text('Adicionar Imagem'),
             ],
           ),
         ),
